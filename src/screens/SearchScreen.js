@@ -1,5 +1,5 @@
 // REACT
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, StyleSheet, Text } from 'react-native';
 
 // MIDDLEWARE
@@ -13,12 +13,12 @@ const SearchScreen = () => {
     const [ businesses, setBusinesses ] = useState([]);
     const [ errorMessage, setErrorMessage ] = useState('');
 
-    const searchAPI = async () => {
+    const searchAPI = async (searchTerm) => {
         try {
             const response = await yelp.get('/search', {
                 params: {
                     limit: 50,
-                    term,
+                    term: searchTerm,
                     location: 'san jose'
                 }
             });
@@ -28,11 +28,28 @@ const SearchScreen = () => {
         }
     };
 
+    // call searchAPI when component is first rendered
+    useEffect(() => {
+        const time = new Date().getHours();
+        let defaultTerm = '';
+        if (time > 6 && time < 11) {
+            defaultTerm = 'breakfast';
+        } else if (time >= 11 && time < 14) {
+            defaultTerm = 'lunch';
+        } else if (time >= 14 && time < 22) {
+            defaultTerm = 'dinner';
+        } else {
+            defaultTerm = 'sandwich';
+        };
+        console.log(defaultTerm);
+        searchAPI(defaultTerm);
+    }, []);
+
     return (
         <View>
             <SearchBar 
                 onTermChange={setTerm}
-                onTermSubmit={searchAPI}
+                onTermSubmit={() => searchAPI(term)}
                 term={term}
             />
             <Text>We have found {businesses.length} businesses.</Text>
