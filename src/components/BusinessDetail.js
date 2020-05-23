@@ -12,6 +12,7 @@ const BusinessDetail = ({ business }) => {
   );
 };
 
+// STYLESHEET
 const styles = StyleSheet.create({
     container: {
         marginLeft: 10

@@ -26,6 +26,7 @@ const SearchBar = ({ term, onTermChange, onTermSubmit }) => {
     );
 };
 
+// STYLESHEET
 const styles = StyleSheet.create({
     background: {
         alignItems: 'center',

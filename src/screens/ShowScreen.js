@@ -10,6 +10,7 @@ const ShowScreen = () => {
     );
 };
 
+// STYLESHEET
 const styles = StyleSheet.create({
 
 });

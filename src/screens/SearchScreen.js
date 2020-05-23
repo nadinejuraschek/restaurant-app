@@ -31,10 +31,22 @@ const SearchScreen = () => {
       <Greeting greeting={greeting} businesses={businesses.length} />
       { errorMessage ? <ErrorMessage error={errorMessage} /> : null }
       <ScrollView>
-        <BusinessList businesses={filterBusinessesByPrice('$')} title="Cost Effective" />
-        <BusinessList businesses={filterBusinessesByPrice('$$')} title="Affordable" />
-        <BusinessList businesses={filterBusinessesByPrice('$$$')} title="Pricy" />
-        <BusinessList businesses={filterBusinessesByPrice('$$$$')} title="Big Spender" />
+        <BusinessList 
+          businesses={filterBusinessesByPrice('$')}
+          title="Cost Effective"
+        />
+        <BusinessList 
+          businesses={filterBusinessesByPrice('$$')}
+          title="Affordable"
+        />
+        <BusinessList 
+          businesses={filterBusinessesByPrice('$$$')}
+          title="Pricy"
+        />
+        <BusinessList 
+          businesses={filterBusinessesByPrice('$$$$')}
+          title="Big Spender"
+        />
       </ScrollView>
     </View>
   );

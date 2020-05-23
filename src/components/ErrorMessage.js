@@ -6,6 +6,7 @@ const ErrorMessage = ({ error }) => {
   return <Text style={styles.error}>{error}</Text>;
 };
 
+// STYLESHEET
 const styles = StyleSheet.create({
   error: {
     marginLeft: 10
