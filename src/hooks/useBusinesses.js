@@ -42,7 +42,6 @@ export default () => {
             defaultTerm = 'sandwich';
             greeting = 'Searching for a late night snack?';
         };
-        console.log(defaultTerm);
         searchAPI(defaultTerm);
         setGreeting(greeting);
     }, []);

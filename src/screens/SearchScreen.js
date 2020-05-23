@@ -1,6 +1,6 @@
 // REACT
 import React, { useState } from 'react';
-import { ScrollView, View } from 'react-native';
+import { ScrollView, StyleSheet, View } from 'react-native';
 
 // COMPONENTS
 import BusinessList from '../components/BusinessList';
@@ -22,7 +22,7 @@ const SearchScreen = () => {
   };
 
   return (
-    <View style={{ flex: 1 }}>
+    <View style={styles.container}>
       <SearchBar
         onTermChange={setTerm}
         onTermSubmit={() => searchAPI(term)}
@@ -48,8 +48,19 @@ const SearchScreen = () => {
           title="Big Spender"
         />
       </ScrollView>
+      <View style={styles.buffer}></View>
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1
+  },
+  buffer: {
+    height: 30,
+    width: '100%'
+  }
+});
 
 export default SearchScreen;

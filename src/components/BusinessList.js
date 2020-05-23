@@ -7,7 +7,7 @@ import { withNavigation } from 'react-navigation';
 import BusinessDetail from './BusinessDetail';
 
 const BusinessList = ({ businesses, title, navigation }) => {
-  if ( businesses == 0) {
+  if ( !businesses.length) {
     return null;
   } else {
     return (
