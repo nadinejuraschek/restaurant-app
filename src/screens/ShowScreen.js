@@ -9,9 +9,6 @@ import yelp from '../api/yelp';
 import { AntDesign } from '@expo/vector-icons';
 import { FontAwesome5 } from '@expo/vector-icons';
 
-// HOOKS
-import useBusinessDetail from '../hooks/useBusinessDetail';
-
 const ShowScreen = ({ navigation }) => {
     const [ result, setResult ] = useState(null);
     const id = navigation.getParam('id');

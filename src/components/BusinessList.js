@@ -7,24 +7,28 @@ import { withNavigation } from 'react-navigation';
 import BusinessDetail from './BusinessDetail';
 
 const BusinessList = ({ businesses, title, navigation }) => {
-  return (
-    <View style={styles.container}>
-      <Text style={styles.title}>{title}</Text>
-      <FlatList 
-        data={businesses}
-        horizontal
-        keyExtractor={business => business.id}
-        renderItem={({ item }) => {
-          return (
-            <TouchableOpacity onPress={() => navigation.navigate('Show', { id: item.id })}>
-              <BusinessDetail business={item} />
-            </TouchableOpacity>
-          );
-        }}
-        showsHorizontalScrollIndicator={false}
-      />
-    </View>
-  );
+  if ( businesses == 0) {
+    return null;
+  } else {
+    return (
+      <View style={styles.container}>
+        <Text style={styles.title}>{title}</Text>
+        <FlatList 
+          data={businesses}
+          horizontal
+          keyExtractor={business => business.id}
+          renderItem={({ item }) => {
+            return (
+              <TouchableOpacity onPress={() => navigation.navigate('Show', { id: item.id })}>
+                <BusinessDetail business={item} />
+              </TouchableOpacity>
+            );
+          }}
+          showsHorizontalScrollIndicator={false}
+        />
+      </View>
+    );
+  };
 };
 
 // STYLESHEET
