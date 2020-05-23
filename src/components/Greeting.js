@@ -12,7 +12,8 @@ const Greeting = ({ greeting, businesses }) => {
 
 const styles = StyleSheet.create({
   container: {
-    marginLeft: 10
+    marginHorizontal: 10,
+    marginBottom: 5
   }
 });
 

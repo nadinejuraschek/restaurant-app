@@ -14,8 +14,9 @@ const BusinessList = ({ title, businesses }) => {
         horizontal
         keyExtractor={business => business.id}
         renderItem={({ item }) => {
-          return <BusinessDetail business={item} />
+          return <BusinessDetail business={item} />;
         }}
+        showsHorizontalScrollIndicator={false}
       />
     </View>
   );

@@ -1,9 +1,6 @@
 // REACT
 import React, { useState } from 'react';
-import { View, StyleSheet, Text } from 'react-native';
-
-// MIDDLEWARE
-import yelp from '../api/yelp';
+import { ScrollView, View } from 'react-native';
 
 // COMPONENTS
 import BusinessList from '../components/BusinessList';
@@ -25,7 +22,7 @@ const SearchScreen = () => {
   };
 
   return (
-    <View>
+    <View style={{ flex: 1 }}>
       <SearchBar
         onTermChange={setTerm}
         onTermSubmit={() => searchAPI(term)}
@@ -33,10 +30,12 @@ const SearchScreen = () => {
       />
       <Greeting greeting={greeting} businesses={businesses.length} />
       { errorMessage ? <ErrorMessage error={errorMessage} /> : null }
-      <BusinessList businesses={filterBusinessesByPrice('$')} title="Cost Effective" />
-      <BusinessList businesses={filterBusinessesByPrice('$$')} title="Affordable" />
-      <BusinessList businesses={filterBusinessesByPrice('$$$')} title="Pricy" />
-      <BusinessList businesses={filterBusinessesByPrice('$$$$')} title="Big Spender" />
+      <ScrollView>
+        <BusinessList businesses={filterBusinessesByPrice('$')} title="Cost Effective" />
+        <BusinessList businesses={filterBusinessesByPrice('$$')} title="Affordable" />
+        <BusinessList businesses={filterBusinessesByPrice('$$$')} title="Pricy" />
+        <BusinessList businesses={filterBusinessesByPrice('$$$$')} title="Big Spender" />
+      </ScrollView>
     </View>
   );
 };
