@@ -2,28 +2,35 @@
 import React from 'react';
 import { FlatList, StyleSheet, Text, View } from 'react-native';
 
+// COMPONENTS
+import BusinessDetail from './BusinessDetail';
+
 const BusinessList = ({ title, businesses }) => {
-    return (
-        <View>
-            <Text style={styles.title}>{title}</Text>
-            <FlatList 
-                data={businesses}
-                horizontal
-                keyExtractor={business => business.id}
-                renderItem={({ item }) => {
-                    return <Text>{ item.name }</Text>
-                }}
-            />
-        </View>
-    );
+  return (
+    <View style={styles.container}>
+      <Text style={styles.title}>{title}</Text>
+      <FlatList 
+        data={businesses}
+        horizontal
+        keyExtractor={business => business.id}
+        renderItem={({ item }) => {
+          return <BusinessDetail business={item} />
+        }}
+      />
+    </View>
+  );
 };
 
 const styles = StyleSheet.create({
-    title: {
-        fontSize: 18,
-        fontWeight: 'bold',
-
-    }
+  container: {
+    marginVertical: 5
+  },
+  title: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    marginBottom: 5,
+    marginLeft: 10
+  }
 });
 
 export default BusinessList;

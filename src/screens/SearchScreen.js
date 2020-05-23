@@ -15,35 +15,30 @@ import SearchBar from '../components/SearchBar';
 import useBusinesses from '../hooks/useBusinesses';
 
 const SearchScreen = () => {
-    const [ term, setTerm ] = useState('');
-    const [ businesses, errorMessage, greeting, searchAPI ] = useBusinesses();
+  const [ term, setTerm ] = useState('');
+  const [ businesses, errorMessage, greeting, searchAPI ] = useBusinesses();
 
-    const filterBusinessesByPrice = (price) => {
-        return businesses.filter(business => {
-            return business.price === price;
-        });
-    };
+  const filterBusinessesByPrice = (price) => {
+    return businesses.filter(business => {
+      return business.price === price;
+    });
+  };
 
-    return (
-        <View>
-            <SearchBar 
-                onTermChange={setTerm}
-                onTermSubmit={() => searchAPI(term)}
-                term={term}
-            />
-            <Text>{greeting}</Text>
-            <Text>We have found {businesses.length} businesses.</Text>
-            { errorMessage ? <Text>{errorMessage}</Text> : null }
-            <BusinessList businesses={filterBusinessesByPrice('$')} title="Name" />
-            <BusinessList businesses={filterBusinessesByPrice('$$')} title="Name" />
-            <BusinessList businesses={filterBusinessesByPrice('$$$')} title="Name" />
-            <BusinessList businesses={filterBusinessesByPrice('$$$$')} title="Name" />
-        </View>
-    );
+  return (
+    <View>
+      <SearchBar
+        onTermChange={setTerm}
+        onTermSubmit={() => searchAPI(term)}
+        term={term}
+      />
+      <Greeting greeting={greeting} businesses={businesses.length} />
+      { errorMessage ? <ErrorMessage error={errorMessage} /> : null }
+      <BusinessList businesses={filterBusinessesByPrice('$')} title="Cost Effective" />
+      <BusinessList businesses={filterBusinessesByPrice('$$')} title="Affordable" />
+      <BusinessList businesses={filterBusinessesByPrice('$$$')} title="Pricy" />
+      <BusinessList businesses={filterBusinessesByPrice('$$$$')} title="Big Spender" />
+    </View>
+  );
 };
-
-const styles = StyleSheet.create({
-
-});
 
 export default SearchScreen;
