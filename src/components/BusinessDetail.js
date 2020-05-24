@@ -15,17 +15,17 @@ const BusinessDetail = ({ business }) => {
 // STYLESHEET
 const styles = StyleSheet.create({
   container: {
-    marginLeft: 10
+    marginLeft: 10,
   },
   image: {
     borderRadius: 4,
     height: 150,
     marginBottom: 5,
-    width: 250
+    width: 250,
   },
   name: {
-    fontWeight: 'bold'
-  }
+    fontWeight: 'bold',
+  },
 });
 
 export default BusinessDetail;

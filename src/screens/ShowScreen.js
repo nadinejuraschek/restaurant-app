@@ -10,44 +10,44 @@ import { AntDesign } from '@expo/vector-icons';
 import { FontAwesome5 } from '@expo/vector-icons';
 
 const ShowScreen = ({ navigation }) => {
-    const [ result, setResult ] = useState(null);
-    const id = navigation.getParam('id');
+  const [ result, setResult ] = useState(null);
+  const id = navigation.getParam('id');
 
-    const getBusiness = async (id) => {
-        const response = await yelp.get(`/${id}`);
-        setResult(response.data);
-    };
+  const getBusiness = async (id) => {
+    const response = await yelp.get(`/${id}`);
+    setResult(response.data);
+  };
 
-    useEffect(() => {
-        getBusiness(id);
-    }, []);
+  useEffect(() => {
+    getBusiness(id);
+  }, []);
 
-    if (!result) {
-        return null;
-    }
+  if (!result) {
+    return null;
+  }
 
-    return (
-        <View style={styles.container}>
-            <Text style={styles.title}>{result.name}</Text>
-            <View style={styles.detail}>
-                <AntDesign name="star" size={30} style={styles.star} />
-                <Text>{result.rating}</Text>
-            </View>
-            <View style={styles.detail}>
-                <FontAwesome5 name="phone" size={24} style={styles.phone} />
-                <Text>{result.phone}</Text>
-            </View>
-            <FlatList 
-                data={result.photos}
-                horizontal
-                keyExtractor={photo => photo}
-                renderItem={({item}) => {
-                    return <Image source={{ uri: item }} style={styles.image} />
-                }}
-                showsHorizontalScrollIndicator={false}
-            />
-        </View>
-    );
+  return (
+    <View style={styles.container}>
+      <Text style={styles.title}>{result.name}</Text>
+      <View style={styles.detail}>
+        <AntDesign name="star" size={30} style={styles.star} />
+        <Text>{result.rating}</Text>
+      </View>
+      <View style={styles.detail}>
+        <FontAwesome5 name="phone" size={24} style={styles.phone} />
+        <Text>{result.phone}</Text>
+      </View>
+      <FlatList 
+        data={result.photos}
+        horizontal
+        keyExtractor={photo => photo}
+        renderItem={({item}) => {
+          return <Image source={{ uri: item }} style={styles.image} />
+        }}
+        showsHorizontalScrollIndicator={false}
+      />
+    </View>
+  );
 };
 
 // STYLESHEET

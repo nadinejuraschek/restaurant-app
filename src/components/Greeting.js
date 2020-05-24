@@ -13,13 +13,13 @@ const Greeting = ({ greeting }) => {
 const styles = StyleSheet.create({
   container: {
     marginHorizontal: 10,
-    marginBottom: 5
+    marginBottom: 5,
   },
   greeting: {
     fontSize: 24,
     fontWeight: 'bold',
-    marginBottom: 5
-  }
+    marginBottom: 5,
+  },
 });
 
 export default Greeting;
